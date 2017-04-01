@@ -1,18 +1,10 @@
 'use strict';
 
 let state = {
-  productsList: [],
-  selectedItems: [],
-  moqList: [],
-  orderInfo: {},
-  customerOrders: [],
-  customersList: [],
-  updatedStockItems:[],
-  authenticationDetails: {
-    authenticationMessage: '',
-    isAuthenticationSuccess: true,
-    userRole: ''
-  }
+  data: [],
+  projectData: {},
+  filterData: "",
+  sortData: ""
 };
 
 export default state;

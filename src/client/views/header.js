@@ -8,30 +8,13 @@ import * as actions from '../actions/index';
 import { connect } from 'react-redux';
 
 class Header extends React.Component {
-  constructor () {
-    super();
-    this.handleLogout = (event) => this._handleLogout(event);
-  }
-
-  _handleLogout (event) {
-    event.preventDefault();
-    this.props.dispatch(actions.logoutUser());
-  }
-
 render () {
-  
     return (
       <div className="container">
          <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
-          <div className="container-fluid">
-            <div className="navbar-header">
-              <a className="navbar-brand" href="/dashboard">FMCG</a>
-            </div>
-            <div id="navbar" className="navbar-collapse collapse">
-              <ul className="nav navbar-nav navbar-right">
-                <li><a href="/purchase">Purchase</a></li>
-                <li><a onClick={this.handleLogout}>Logout</a></li>
-              </ul>
+          <div className="container-fluid navbarColor">
+            <div className="navbar-header brandColor">
+              <a className="navbar-brand" href="/">Gieom Challenge</a>
             </div>
           </div>
          </nav>

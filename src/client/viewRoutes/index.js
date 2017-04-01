@@ -1,13 +1,12 @@
 'use strict';
 
+/* not used anywhere */
 import View from '../views/wrapper';
 
 let viewRoutesConfig = [{
-  route: '/:organizationName/reactReduxSkeleton',
+  route: '/reactReduxSkeleton',
   page: View,
-  pageTitle: '',
-  entitlement: 'Entitlement',
-  permission: ['View']
+  pageTitle: ''
 }];
 
 export default viewRoutesConfig;

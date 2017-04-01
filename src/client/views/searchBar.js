@@ -1,45 +1,40 @@
-/*global document alert*/
-
-'use strict';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+import Autosuggest from 'react-autosuggest';
+import * as actions from '../actions/index';
 
 class SearchBar extends React.Component {
-
-constructor () {
+  constructor() {
     super();
-    this.searchChange = (event) => this._searchChange(event);
-    this.customFilterFunction = (items, query) => this._customFilterFunction (items, query);
-}
-
-_searchChange (event) {
-    this.props.changeFilter(event.target.value);
+    this.state = {
+      text: '',
+    };
+    this.textChanged = (event) => this._textChanged(event);
   }
 
-  _customFilterFunction (items, query) {
-    console.log("items: ", items);
-    console.log("query: ", query);
-    // return items.filter((item) => {
+  _textChanged (event) {
+    event.preventDefault();
+    this.setState ({
+      text: event.target.value
+    }, () => {
+      this.props.dispatch(actions.updateProjectsonFilter(this.state.text));
+    });
+  }
 
-    //   for (var key in flat) {
-    //     if (String(flat[key]).toLowerCase().indexOf(query.toLowerCase()) >= 0) return true;
-    //   };
-    //   return false;
-    // });
-}
+  render() {
 
-
-
-render () {
-    
     return (
-         <div className="input-group" style={{width:'200%', marginBottom:'5px', marginTop: '5px'}}>
-              <span className="input-group-addon"><i className="glyphicon glyphicon-search"></i></span>
-              <input id="msg" type="text" className="form-control" name="msg" placeholder="Search..." onChange={this.searchChange} />
-         </div>
+      <div className="form-group">
+        <input type="text"
+               id="search"
+               className="form-control"
+               value={this.state.text}
+               onChange={this.textChanged}
+               placeholder="Search projects..." />
+      </div>
     );
   }
 }
 
-export default SearchBar;
+export default connect()(SearchBar);

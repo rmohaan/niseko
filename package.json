@@ -1,7 +1,7 @@
 {
-  "name": "nearme",
+  "name": "module-generator",
   "version": "0.0.0",
-  "description": "nearme module",
+  "description": "module-generator",
   "bugs": "&#39;&#39;",
   "author": "rmohaan",
   "license": "SEE LICENSE IN LICENSE",
@@ -14,7 +14,7 @@
     "registry": ""
   },
   "keywords": [
-    "nearme",
+    "module-generator",
     ""
   ],
   "dependencies": {
@@ -64,13 +64,16 @@
     "passport-local": "^1.0.0",
     "react": "^15.2.1",
     "react-addons-test-utils": "^15.2.1",
+    "react-autosuggest": "^9.0.0",
     "react-bootstrap-table": "^2.7.1",
     "react-dom": "^15.2.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.6.0",
     "react-router-redux": "^4.0.5",
+    "react-select": "^1.0.0-rc.2",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
+    "requestify": "^0.2.5",
     "router": "^1.1.4",
     "sass-loader": "^4.0.2",
     "serve-favicon": "^2.3.2",

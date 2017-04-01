@@ -6,7 +6,7 @@ import transformers from '../../src/middleware/transformers';
 let state = {
   example: transformers.data(mockdata.data),
   user: {
-    organizationName: 'ABCOMember3'
+    name: ''
   }
 };
 
