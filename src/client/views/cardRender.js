@@ -52,27 +52,17 @@ class CardRender extends React.Component {
         }
       });
 
-      var plegde = cols.map((colData, index) => {
-        if (colData == 'amt.pledged') {
-          return (
-            <div key={index}>
-              <span className="started-by">Pledged</span>
-              <span className="started-by glyphicon glyphicon-usd smaller-text"></span>
-              {item[colData]}
-            </div> );
-        }
-      });
-
       var funding = cols.map((colData, index) => {
+        var currency = item["amt.pledged"].toLocaleString(item.currency, { style: 'currency', currency: item.currency });
         if (colData == 'percentage.funded') {
           return (
             <div key={index}>
               <span className="started-by"> Funding </span>
                 {item[colData]}%
               <span className="started-by float-right">
-                <span className="started-by">Pledged</span>
-                <span className="started-by glyphicon glyphicon-usd smaller-text"></span>
-                  {item['amt.pledged']}
+                <span className="started-by">Pledged: </span>
+                <span className="started-by smaller-text"></span>
+                  {currency}
               </span>
             </div>
             );

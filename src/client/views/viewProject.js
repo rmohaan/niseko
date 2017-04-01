@@ -72,9 +72,9 @@ render () {
               <span className="started-by"> Funding </span>
                 {item["percentage.funded"]}%
               <span className="started-by float-right">
-                <span className="started-by">Pledged</span>
-                <span className="started-by glyphicon glyphicon-usd smaller-text"></span>
-                  {item["amt.pledged"]}
+                <span className="started-by">Pledged: </span>
+                <span className="started-by smaller-text"></span>
+                  {item["amt.pledged"] ? item["amt.pledged"].toLocaleString(item.currency, { style: 'currency', currency: item.currency }) : ""}
               </span>
             </div>
 
