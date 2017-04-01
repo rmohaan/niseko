@@ -1,7 +1,7 @@
 {
-  "name": "module-generator",
+  "name": "gieom-challenge",
   "version": "0.0.0",
-  "description": "module-generator",
+  "description": "gieom-challenge",
   "bugs": "&#39;&#39;",
   "author": "rmohaan",
   "license": "SEE LICENSE IN LICENSE",
@@ -14,7 +14,7 @@
     "registry": ""
   },
   "keywords": [
-    "module-generator",
+    "gieom-challenge",
     ""
   ],
   "dependencies": {

@@ -2,17 +2,22 @@
 
 ## Summary
 
-module-generator module
+gieom-challenge module
 
 ## Install
 
 ```sh
-$ npm install module-generator --save
+$ npm install gieom-challenge --save
 ```
 ## Install dependencies
 ```sh
 $ npm install
 ```
+## Build package and Run server
+```sh
+$ npm run start
+```
+
 
 ## Build package
 ```sh
@@ -27,11 +32,6 @@ $ npm run startDev
 ## Open website
 ```sh
 localhost:4000
-```
-
-## To view product backlog
-```sh
-Update the link to Product here
 ```
 
 ## Usage

@@ -5,7 +5,7 @@ var routes = require('./routes');
 var cookieParser = require('cookie-parser');
 var compress = require('compression');
 var port = process.env.PORT || 4000;
-
+var favicon = require('serve-favicon');
 
 var app = express(),
   dir = __dirname,
@@ -28,6 +28,7 @@ app.use(bodyParser.urlencoded({
   limit: '50mb'
 }));
 app.use(bodyParser.json());
+app.use(favicon(path.join(imagesDir, 'favicon.ico')));
 
 app.get ('/', (req, res, next) => {
   routes.getData(req, res);
