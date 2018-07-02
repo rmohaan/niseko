@@ -24,17 +24,10 @@ class Home extends React.Component {
           <Header />
           <div className="container-fluid">
             <div className="row">
-
                 <div className="container-fluid search-margin-top">
-                  <div className="col-md-6 search-margin-left">
-                    <SearchBar />
-                  </div>
-                  <div className="col-md-3 sort-bar-font">
-                    <SortBar value="Sort by percentage funded" sorter="percentage"/>
-                  </div>
-                  <div className="col-md-3 sort-bar-font">
-                    <SortBar value="Sort by Time" sorter="time"/>
-                  </div>
+                    <div className="col-md-6 search-margin-left">
+                      <SearchBar />
+                    </div>
                 </div>
                 <HomePage />
             </div>

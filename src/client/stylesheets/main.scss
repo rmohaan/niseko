@@ -6,6 +6,12 @@
  * Base structure
  */
 
+ html {
+  position: relative;
+  min-height: 100%;
+}
+
+
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
@@ -19,15 +25,6 @@ body {
 }
 
 /*
- * Global add-ons
- */
-
-.sub-header {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
-}
-
-/*
  * Top navigation
  * Hide default border to remove 1px line.
  */
@@ -35,40 +32,30 @@ body {
   border: 0;
 }
 
-/*
- * Sidebar
- */
 
-#body {
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  margin-bottom: -88px;
-  min-height: 100%;
-  margin-left: 200px;
-  width: 100%;
-  padding-top: 0px !important;
+.footer-container {
+  margin-top: 10px;
 }
 
 footer {
   position: absolute;
-  bottom: -100;
   width: 100%;
-  /* Set the fixed height of the footer here */
   height: 60px;
-  background-color: #f5f5f5;
+  background-color: lightblue;
+  margin-left: -150px;  
 }
 
 .text-footer {
-    text-shadow: none;
-    font-size: 14px;
-    color: #999;
-    padding: 20px 0 0 5px;
-    margin-left: -90px;
-    margin-right: 5px;
+  text-shadow: none;
+  font-size: 14px;
+  color: #337ab7;
+  padding: 20px 0 0 5px;
+  margin-left: 10px;
+  margin-right: 5px;
 }
 
 .hide {
-   display: none;
+  display: none;
  }
 
 .boldText {
@@ -84,42 +71,8 @@ footer {
   color: red;
 }
 
-.text-blue {
-  color: #2874f0;
-}
-
-.tag {
-  background-color: #31708f;
-  border-radius: 9px;
-  color: #bce8f1;
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 15px;
-  padding: 2px 12px 1px;
-  text-transform: uppercase;
-  white-space: nowrap;
-
-  &.tag-success {
-    background-color: #388e3c;
-    width: 75px;
-  }
-
-  &.tag-danger {
-    background-color: #a94442;
-    width: 100px;
-  }
-}
-
-.inStock {
-  background-color: #388e3c;
-}
-
-.priceTag {
-  font-weight: 900;
-  font-size: large;
-  padding-left: 20px;
-  padding-top: 15px;
-  color: lightseagreen;
+.text-white {
+  color: white;
 }
 
 nav {
@@ -127,7 +80,7 @@ nav {
 }
 
 .navbarColor {
-  background-color: lightseagreen;
+  background-color: #2d9aac;
 }
 
 .brandColor {
@@ -141,15 +94,6 @@ nav {
 .hr-styling {
   width: 350%;
   border-top: 1px solid lightseagreen;
-}
-
-.adjacentSpace {
-  padding-left: 10px;
-  margin-left: 5px;
-}
-
-.whiteText {
-  color: white;
 }
 
 .editHeaderName {
@@ -176,33 +120,6 @@ nav {
 
 .float-right {
   float: right;
-}
-
-.font-remove-underline {
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-.w3-border-blue, .w3-hover-border-blue:hover {
-    border-color: #2196F3!important;
-}
-
-.w3-pale-blue, .w3-hover-pale-blue:hover {
-    color: #000!important;
-    background-color: #fff!important;
-}
-
-.w3-container {
-    padding: 0.01em 16px;
-}
-
-.w3-leftbar-green {
-    border-left: 6px solid lightseagreen !important;
-}
-
-.w3-leftbar-red {
-    border-left: 6px solid #2874f0 !important;
 }
 
 .height-control {
@@ -247,4 +164,88 @@ nav {
 
 .search-margin-left {
   margin-left: -15px;
+}
+
+.card {
+  font-family: 'Lora', serif;
+}
+
+.card-content {
+  display: flex;
+  border: 1px solid #c6c6c6;
+  border-radius: 3px;
+  padding: 16px 10px 16px 20px;
+  margin: 16px 0px;
+}
+
+.card-image {
+  height: "225px";
+  width: "225px";
+  border-radius: 5px;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.card-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2d9aac;
+}
+
+.card-desc {
+  max-width: 650px;
+}
+
+.card-room-details {
+  display: flex;
+  flex-direction: column;
+  font-weight: bolder;
+  padding-top: 5px;
+}
+
+.card-room-spec {
+  color: #757575;
+  padding-left: .75em;
+  font-weight: 700;
+}
+
+.card-amenities {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.card-amenities-head {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2d9aac;
+}
+
+.card-amenities-list {
+  margin-top: 0;
+  margin-bottom: 10px;
+  list-style-type: none;
+  margin-left: -25px;
+}
+
+.card-available {
+  color: lightseagreen;
+  margin-right: 5px;
+}
+
+.card-unavailable {
+  color: brown;
+  margin-right: 5px;
+}
+
+.card-content-no-data {
+  display: flex;
+  border: 1px solid #c6c6c6;
+  border-radius: 3px;
+  padding: 16px 16px 16px 20px;
+  justify-content: center;
 }

@@ -30,20 +30,20 @@ render () {
            <div className="loader" height='100px' width='100px'>Testing and test working</div>
         </div>);
     }
-        let ct = moment.utc(),
-        et = moment(item["end.time"]),
-        dif = ct.diff(et, 'days'),
-        text = "",
-        statusClass = "";
+    let ct = moment.utc(),
+    et = moment(item["end.time"]),
+    dif = ct.diff(et, 'days'),
+    text = "",
+    statusClass = "";
 
-      if (dif > 0) {
-        statusClass = statusClass + "text-red";
-        text = "Ended " + dif + " days ago.";
-      }
-      else {
-        statusClass = statusClass + "text-green";
-        text = "Live till " + et.format('YYYY-MM-DD HH:mm:ss') + ".";
-      }
+    if (dif > 0) {
+      statusClass = statusClass + "text-red";
+      text = "Ended " + dif + " days ago.";
+    }
+    else {
+      statusClass = statusClass + "text-green";
+      text = "Live till " + et.format('YYYY-MM-DD HH:mm:ss') + ".";
+    }
 
     return (
       <div className="container-fluid">

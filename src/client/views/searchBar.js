@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import Autosuggest from 'react-autosuggest';
 import * as actions from '../actions/index';
 
 class SearchBar extends React.Component {
@@ -31,7 +30,7 @@ class SearchBar extends React.Component {
                className="form-control"
                value={this.state.text}
                onChange={this.textChanged}
-               placeholder="Search projects..." />
+               placeholder="Search rooms..." />
       </div>
     );
   }

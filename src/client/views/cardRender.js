@@ -12,6 +12,9 @@ class CardRender extends React.Component {
 
   constructor ()  {
     super();
+    String.prototype.toProperCase = function () {
+      return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    };
     this.generateProductLayout = (list, cols) => this._generateProductLayout(list, cols);
     this.generateNoDataFound = () =>  this._generateNoDataFound();
   }
@@ -20,89 +23,73 @@ class CardRender extends React.Component {
     return list.map((item, index) => {
       let nameDefClass = "font-remove-underline boldText",
           nameClass = "",
-          titleText = item.title;
-      if (item["percentage.funded"] > 1000 ) {
-          nameClass = nameDefClass + " text-blue";
-          titleText = "One of the Mosted funded project. More than 1000 funders";
-      }
-      else {
-          nameClass = nameDefClass + " text-green";
-      }
-      var title = cols.map((colData, index) => {
-        if (colData == 'title') {
-          return (
-            <div key={index}>
-              <a href={`https://www.kickstarter.com/${item.url}`}
-                 className={nameClass}
-                 title={titleText}
-                 target="blank">
-              {item[colData]}
-              </a>
-              <span className="float-right" key={index+1}>
-                {item.country}, {item.state}
-              </span>
-            </div>
-          );
-        }
-      });
+          titleText = item.name;
 
-      var by = cols.map((colData, index) => {
-        if (colData == 'by') {
-          return (<div className="padding-left" key={index}> <span className="started-by"> founded by </span>{item[colData]} </div> );
-        }
-      });
-
-      var funding = cols.map((colData, index) => {
-        var currency = item["amt.pledged"].toLocaleString(item.currency, { style: 'currency', currency: item.currency });
-        if (colData == 'percentage.funded') {
-          return (
-            <div key={index}>
-              <span className="started-by"> Funding </span>
-                {item[colData]}%
-              <span className="started-by float-right">
-                <span className="started-by">Pledged: </span>
-                <span className="started-by smaller-text"></span>
-                  {currency}
-              </span>
-            </div>
-            );
-        }
-      });
-
-      var starterStatus = cols.map((colData, index) => {
-        if (colData == 'end.time') {
-          let ct = moment.utc(),
-              et = moment(item[colData]),
-              dif = ct.diff(et, 'days'),
-              text = "",
-              statusClass = "";
-          if (dif > 0) {
-            statusClass = statusClass + "text-red";
-            text = "Ended " + dif + " days ago.";
-          }
-          else {
-            statusClass = statusClass + "text-green";
-            text = "Live till " + et.format('YYYY-MM-DD HH:mm:ss') + ".";
-          }
-
-          return (
-            <div className={statusClass} key={index}>
-              {text}
-              <span className="started-by float-right"> Backers: {item['num.backers']} </span>
-            </div> );
-        }
-      });
-      var defClss = "col-md-12 w3-container w3-pale-blue w3-border-blue";
-      var sidebarClass = item["percentage.funded"] > 1000 ? defClss + " w3-leftbar-red" : defClss + " w3-leftbar-green";
       return (
-        <div className="col-md-6 height-control" key={index}>
-          <div className={sidebarClass} key={index+1}>
-                {title}
-                {by}
-                <br />
-                {funding}
-                {starterStatus}
-            <Link to={`/view/${item["s.no"]}`}>View More</Link>
+        <div className="col-md-12 card" key={index}>
+          <div className="card-content">
+            <img className="card-image" src={item.images[0] != undefined ? item.images[0] : "http://www.dharitri.com/assets_news/images/7770060.jpg"} height="225px" width="225px" />
+            <div className="card-info"> 
+              <div className="card-name">
+                {item.name.toProperCase()}
+              </div>
+              <div className="card-desc">
+                {item.description}
+              </div>
+              <div className="card-room-details">
+                Room Details
+                <div className="card-room-spec">
+                  Bedroom: {item.bathrooms}
+                </div>
+                <div className="card-room-spec">
+                  Occupancy: {item.standardPax}
+                </div>
+                <div className="card-room-spec">
+                  Max. Occupancy: {item.maximumPax}
+                </div>
+                <div className="card-room-spec">
+                  Floor Sizing: {item.floorArea}sqm
+                </div>
+                <div className="card-room-spec">
+                  Ready To Occupy: {item.status === "healthy" ? "Yes" : "No" }
+                </div>
+              </div>
+            </div>
+            <div className="card-amenities">
+              <div className="card-amenities-head"> 
+                Amenities
+              </div>
+              <ul className="card-amenities-list">
+                <li>
+                  <i className={item.amenities.aircon ? "fa fa-check card-available" : "fa fa-times card-unavailable"}></i> 
+                  <span>Air Conditioned</span>
+                </li>
+                <li>
+                  <i className={item.amenities.hdtv ? "fa fa-check card-available" : "fa fa-times card-unavailable"}></i> 
+                  <span>Free satellite TV with English language channels </span>
+                </li>
+                <li>
+                  <i className={item.amenities.btspeakers ? "fa fa-check card-available" : "fa fa-times card-unavailable"}></i> 
+                  <span>5.1 Bluetooth surround system</span>
+                </li>
+                <li>
+                  <i className={item.amenities.cardkey ? "fa fa-check card-available" : "fa fa-times card-unavailable"}></i> 
+                  <span>Handy portable card key</span>
+                </li>
+                <li>
+                  <i className={item.amenities.chromecast ? "fa fa-check card-available" : "fa fa-times card-unavailable"}></i> 
+                  <span>Application Streaming</span>
+                </li>
+                <li>
+                  <i className={item.amenities.jacuzzi ? "fa fa-check card-available" : "fa fa-times card-unavailable"}></i> 
+                  <span>Whirlpool bathtubs</span>
+                </li>
+                <li>
+                  <i className={item.amenities.fireplace ? "fa fa-check card-available" : "fa fa-times card-unavailable"}></i> 
+                  <span>Dedicated Fireplace</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       );
@@ -110,14 +97,20 @@ class CardRender extends React.Component {
 }
 
 _generateNoDataFound () {
-  return <div> No Data Found </div>;
+  return (
+    <div className="col-md-12 card">
+      <div className="card-content-no-data">
+        No Data Found 
+      </div>
+    </div>
+  );
 }
 
 render () {
-    let list = this.props.projectList,
+    let list = this.props.hotelList,
         cols = this.props.cols,
         header = '';
-    if (this.props.projectList) {
+    if (list.length > 0) {
       list = this.generateProductLayout(list, cols);
     }
     else {

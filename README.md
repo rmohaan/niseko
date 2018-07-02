@@ -1,13 +1,13 @@
-# Gieom
+# Niseko
 
 ## Summary
 
-gieom-challenge module
+niseko module
 
 ## Install
 
 ```sh
-$ npm install gieom-challenge --save
+$ npm install niseko --save
 ```
 ## Install dependencies
 ```sh
