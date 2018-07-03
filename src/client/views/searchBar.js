@@ -12,19 +12,20 @@ class SearchBar extends React.Component {
     this.textChanged = (event) => this._textChanged(event);
   }
 
+  //TODO: Why do I need to push this to store???
   _textChanged (event) {
     event.preventDefault();
     this.setState ({
       text: event.target.value
     }, () => {
-      this.props.dispatch(actions.updateProjectsonFilter(this.state.text));
+      this.props.dispatch(actions.updateRoomsOnFilter(this.state.text));
     });
   }
 
   render() {
 
     return (
-      <div className="form-group">
+      <div>
         <input type="text"
                id="search"
                className="form-control"

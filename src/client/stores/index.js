@@ -6,10 +6,8 @@ import * as reducers from '../reducers/index';
 import defaultState from './defaultState';
 
 const reducer = combineReducers({
-  data: reducers.data,
-  projectData: reducers.projectData,
+  rooms: reducers.roomsData,
   filterData: reducers.filterData,
-  sortData: reducers.sortData,
   routing: routerReducer
 });
 

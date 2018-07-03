@@ -249,3 +249,30 @@ nav {
   padding: 16px 16px 16px 20px;
   justify-content: center;
 }
+
+.card-ready-occupy {
+  padding-top: 5px;
+  color: mediumseagreen;
+  padding-left: 0px;
+}
+
+.search-panel {
+  background-color: lightseagreen;
+  padding: 16px 16px 16px 16px;
+  border: 0;
+  margin: 0px;
+  font-family: 'Lora', serif;
+  border-radius: 0px;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin-left: 10%;
+}
+
+.icon-setter {
+  max-width: 10px;
+  margin-right: 10px;
+}

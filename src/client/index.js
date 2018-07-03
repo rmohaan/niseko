@@ -10,7 +10,6 @@ import store from './stores/index';
 import "./stylesheets/main.scss";
 
 import HomePageWrapper from './views/homePageWrapper';
-import ViewProjectWrapper from './views/viewProjectWrapper';
 
 const history = syncHistoryWithStore(browserHistory, store);
 
@@ -30,7 +29,6 @@ render(
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={HomePageWrapper}/>
-        <Route path='/view/:id' component={ViewProjectWrapper}/>
       </Route>
     </Router>
   </Provider>, document.getElementById('app'));

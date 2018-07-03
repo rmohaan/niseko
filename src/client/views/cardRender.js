@@ -4,9 +4,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import classNames from 'classnames';
-import { Link } from 'react-router';
-import moment from 'moment';
+import * as CONSTANTS from './constants';
 
 class CardRender extends React.Component {
 
@@ -15,20 +13,17 @@ class CardRender extends React.Component {
     String.prototype.toProperCase = function () {
       return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     };
-    this.generateProductLayout = (list, cols) => this._generateProductLayout(list, cols);
+    this.generateProductLayout = (list) => this._generateProductLayout(list);
     this.generateNoDataFound = () =>  this._generateNoDataFound();
   }
 
-  _generateProductLayout (list, cols) {
+  _generateProductLayout (list) {
     return list.map((item, index) => {
-      let nameDefClass = "font-remove-underline boldText",
-          nameClass = "",
-          titleText = item.name;
 
       return (
         <div className="col-md-12 card" key={index}>
           <div className="card-content">
-            <img className="card-image" src={item.images[0] != undefined ? item.images[0] : "http://www.dharitri.com/assets_news/images/7770060.jpg"} height="225px" width="225px" />
+            <img className="card-image" src={item.images.length > 0 ? item.images[0] : CONSTANTS.NO_IMAGE_URL} height="225px" width="225px" />
             <div className="card-info"> 
               <div className="card-name">
                 {item.name.toProperCase()}
@@ -39,21 +34,25 @@ class CardRender extends React.Component {
               <div className="card-room-details">
                 Room Details
                 <div className="card-room-spec">
-                  Bedroom: {item.bathrooms}
+                  <i className="fa fa-bed icon-setter"></i> 
+                  <span> Bedroom: {item.bathrooms} </span>
                 </div>
                 <div className="card-room-spec">
-                  Occupancy: {item.standardPax}
+                  <i className="fa fa-user icon-setter"></i> 
+                  <span>Occupancy: {item.standardPax}</span>
                 </div>
                 <div className="card-room-spec">
-                  Max. Occupancy: {item.maximumPax}
+                  <i className="fa fa-users icon-setter"></i> 
+                  <span>Max. Occupancy: {item.maximumPax}</span>
                 </div>
                 <div className="card-room-spec">
-                  Floor Sizing: {item.floorArea}sqm
-                </div>
-                <div className="card-room-spec">
-                  Ready To Occupy: {item.status === "healthy" ? "Yes" : "No" }
+                  <i className="fa fa-square icon-setter"></i> 
+                  <span>Floor Sizing: {item.floorArea}sqm</span>
                 </div>
               </div>
+              <div className="card-ready-occupy">
+                  <span>Ready To Occupy: {item.status === CONSTANTS.HEALTH_STATUS ? "Yes" : "No" }</span>
+                </div>
             </div>
             <div className="card-amenities">
               <div className="card-amenities-head"> 
@@ -107,11 +106,9 @@ _generateNoDataFound () {
 }
 
 render () {
-    let list = this.props.hotelList,
-        cols = this.props.cols,
-        header = '';
-    if (list.length > 0) {
-      list = this.generateProductLayout(list, cols);
+    let list = this.props.roomList;
+    if (list && list.length > 0) {
+      list = this.generateProductLayout(list);
     }
     else {
       list = this.generateNoDataFound();

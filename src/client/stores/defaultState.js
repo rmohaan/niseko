@@ -1,10 +1,8 @@
 'use strict';
 
 let state = {
-  data: [],
-  projectData: {},
-  filterData: "",
-  sortData: ""
+  rooms: [],
+  filterData: ""
 };
 
 export default state;

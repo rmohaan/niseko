@@ -23,15 +23,15 @@ module.exports = {
       "soldSeparately": true,
       "upgradedFacilities": false,
       "amenities": {
-        "aircon": false,
-        "appletv": false,
-        "btspeakers": false,
-        "cardkey": false,
-        "chromecast": false,
-        "fireplace": false,
+        "aircon": true,
+        "appletv": true,
+        "btspeakers": true,
+        "cardkey": true,
+        "chromecast": true,
+        "fireplace": true,
         "hdtv": false,
-        "jacuzzi": false,
-        "nespresso": false
+        "jacuzzi": true,
+        "nespresso": true
       },
       "bedConfigurations": [
         92, 224, 225, 226, 228
@@ -65,15 +65,15 @@ module.exports = {
       "soldSeparately": true,
       "upgradedFacilities": false,
       "amenities": {
-        "aircon": false,
-        "appletv": false,
-        "btspeakers": false,
-        "cardkey": false,
-        "chromecast": false,
+        "aircon": true,
+        "appletv": true,
+        "btspeakers": true,
+        "cardkey": true,
+        "chromecast": true,
         "fireplace": false,
-        "hdtv": false,
-        "jacuzzi": false,
-        "nespresso": false
+        "hdtv": true,
+        "jacuzzi": true,
+        "nespresso": true
       },
       "bedConfigurations": [
         92, 230, 231
@@ -109,15 +109,15 @@ module.exports = {
       "soldSeparately": true,
       "upgradedFacilities": false,
       "amenities": {
-        "aircon": false,
-        "appletv": false,
-        "btspeakers": false,
+        "aircon": true,
+        "appletv": true,
+        "btspeakers": true,
         "cardkey": false,
-        "chromecast": false,
-        "fireplace": false,
-        "hdtv": false,
-        "jacuzzi": false,
-        "nespresso": false
+        "chromecast": true,
+        "fireplace": true,
+        "hdtv": true,
+        "jacuzzi": true,
+        "nespresso": true
       },
       "bedConfigurations": [
         17, 21, 22, 23, 92
@@ -151,14 +151,14 @@ module.exports = {
       "soldSeparately": true,
       "upgradedFacilities": true,
       "amenities": {
-        "aircon": false,
+        "aircon": true,
         "appletv": true,
         "btspeakers": true,
         "cardkey": true,
         "chromecast": false,
-        "fireplace": false,
+        "fireplace": true,
         "hdtv": false,
-        "jacuzzi": false,
+        "jacuzzi": true,
         "nespresso": true
       },
       "bedConfigurations": [
@@ -191,15 +191,15 @@ module.exports = {
       "soldSeparately": true,
       "upgradedFacilities": false,
       "amenities": {
-        "aircon": false,
-        "appletv": false,
-        "btspeakers": false,
+        "aircon": true,
+        "appletv": true,
+        "btspeakers": true,
         "cardkey": true,
-        "chromecast": false,
-        "fireplace": false,
+        "chromecast": true,
+        "fireplace": true,
         "hdtv": false,
-        "jacuzzi": false,
-        "nespresso": false
+        "jacuzzi": true,
+        "nespresso": true
       },
       "bedConfigurations": [
         8, 9, 92

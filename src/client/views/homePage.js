@@ -7,38 +7,29 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import CardRender from './cardRender';
 import _ from 'lodash';
+import SearchInput, {createFilter} from 'react-search-input'
 
-function convertToArray (data) {
-  if (typeof data === 'object') {
-    data = $.map(data, function(value, index) {
-       return [value];
-    });
-  }
-  return data;
-}
-
-const cols = ['name', 'description', 'images'];
+const KEYS_TO_FILTERS = ['name', 'description', 'standardPax', "maximumPax"];
 
 class HomePage extends React.Component {
-
-render () {
-  let data = this.props.data.data ? this.props.data.data : [],
-      filterInput = this.props.filterData ? this.props.filterData : "",
-      filteredData = data;
-      if (filterInput.length > 0) {
-        filteredData = filteredData.filter(hotel => hotel.name.toLowerCase().indexOf(filterInput.toLowerCase()) !== -1);
-      }
-      return (
-        <div>
-          <CardRender hotelList={filteredData} cols={cols}/>
-        </div>
-      );
+  render () {
+    let data = this.props.rooms ? this.props.rooms.data : [],
+        filterInput = this.props.filterData ? this.props.filterData : "",
+        filteredData = data;
+    if (filterInput.length > 0) {
+      filteredData = filteredData.filter(createFilter(this.props.filterData, KEYS_TO_FILTERS));
+    }
+    return (
+      <div>
+        <CardRender roomList={filteredData} />
+      </div>
+    );
   }
 }
 
 function select (state) {
   return {
-    data: state.data,
+    rooms: state.rooms,
     filterData: state.filterData
   };
 }
