@@ -2,22 +2,17 @@
 
 import React from 'react';
 import {render} from 'react-dom';
-import { browserHistory, Router, Route, IndexRoute } from 'react-router'
+import { browserHistory, Router, Route, IndexRoute } from 'react-router';
 import {Provider} from 'react-redux';
-import { syncHistoryWithStore } from 'react-router-redux';
-
 import store from './stores/index';
-import "./stylesheets/main.scss";
-
+import './stylesheets/main.scss';
 import HomePageWrapper from './views/homePageWrapper';
-
-const history = syncHistoryWithStore(browserHistory, store);
 
 class App extends React.Component {
   render () {
 
     return (
-       <div>
+      <div>
         {this.props.children}
       </div>
     );

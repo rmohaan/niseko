@@ -3,10 +3,9 @@
 'use strict';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 export default class Footer extends React.Component {
-render () {
+  render () {
     return (
       <div className="container footer-container">
         <footer>
@@ -14,7 +13,7 @@ render () {
             <a href='https://stay.kiniseko.com/en/'> HTM </a> &copy; 2018.  All rights reserved. 
           </p>
         </footer>
-     </div>
+      </div>
     );
   }
 }

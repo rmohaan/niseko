@@ -9,10 +9,6 @@ var config = {
     bundle: APP_DIR + '/index.js'
   },
   output: {
-    path: BUILD_DIR,
-    filename: 'bundle.js'
-  },
-  output: {
     path: path.join(BUILD_DIR, '/build/js'),
     filename: '[name].js'
   },
@@ -24,11 +20,11 @@ var config = {
         loader : 'babel'
       }, {
         test: /\.scss$/,
-        loaders: ["style-loader", "css-loader", "sass-loader"]
-    }, {
-      test: /\.css$/,
-      loaders: ['style', 'css'],
-    }
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
+      }, {
+        test: /\.css$/,
+        loaders: ['style', 'css'],
+      }
     ]
   },
   sassLoader: {

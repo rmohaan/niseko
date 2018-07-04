@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { updateRoomsOnFilter } from '../actions/index';
 
@@ -27,11 +26,11 @@ class SearchBar extends React.Component {
     return (
       <div>
         <input type="text"
-               id="search"
-               className="form-control"
-               value={this.state.text}
-               onChange={this.textChanged}
-               placeholder="Search rooms..." />
+          id="search"
+          className="form-control"
+          value={this.state.text}
+          onChange={this.textChanged}
+          placeholder="Search rooms..." />
       </div>
     );
   }

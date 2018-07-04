@@ -1,13 +1,9 @@
 'use strict';
 
-import mockdata from '../../src/middleware/mockdata';
-import transformers from '../../src/middleware/transformers';
+import data from '../../data';
 
 let state = {
-  example: transformers.data(mockdata.data),
-  user: {
-    name: ''
-  }
+  rooms: data
 };
 
 export default state;

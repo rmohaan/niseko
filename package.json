@@ -17,10 +17,20 @@
     "niseko",
     ""
   ],
+  "scripts": {
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
+    "startServer": "node server.js",
+    "startDev": "nodemon server.js",
+    "buildDev": "webpack -d --watch",
+    "build": "webpack -d",
+    "start": "npm-run-all build startServer",
+    "lint": "./node_modules/.bin/eslint src",
+    "lint-fixup": "./node_modules/.bin/eslint src --ext .js,.jsx --fix",
+    "test": "mocha test/view/*.spec.js"
+  },
   "dependencies": {
     "axios": "^0.15.3",
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
     "babel-loader": "^6.2.5",
     "babel-plugin-istanbul": "^1.1.0",
     "babel-plugin-react-transform": "^2.0.2",
@@ -39,15 +49,11 @@
     "enzyme": "^2.3.0",
     "expect": "^1.20.1",
     "express": "^4.16.3",
-    "jsdom": "^9.2.0",
     "lodash": "^4.17.10",
-    "mocha": "^2.4.5",
     "node-sass": "^4.9.0",
-    "nodemon": "^1.17.5",
     "npm-run-all": "^1.5.1",
     "nyc": "^8.3.1",
     "react": "^15.2.1",
-    "react-addons-test-utils": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.6.0",
@@ -61,6 +67,18 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.13.3"
   },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-airbnb": "^2.5.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^5.0.1",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-react": "^7.10.0",
+    "jsdom": "^9.2.0",
+    "mocha": "^2.5.3",
+    "nodemon": "^1.17.5",
+    "react-addons-test-utils": "^15.2.1"
+  },
   "nyc": {
     "exclude": [
       "**/client/reducers/*.js",
@@ -68,13 +86,5 @@
       "**/middleware/**/*.js",
       "**/test/**.js"
     ]
-  },
-  "scripts": {
-    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
-    "startServer": "node server.js",
-    "startDev": "nodemon server.js",
-    "buildDev": "webpack -d --watch",
-    "build": "webpack -d",
-    "start": "npm-run-all build startServer"
   }
 }

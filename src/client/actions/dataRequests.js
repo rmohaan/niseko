@@ -18,21 +18,9 @@ export function getRoomsData () {
     method: 'get',
     url: '/api/getData'
   })
-  .then(function(response) {
-    return {
-      data: response.data
-    }
-  });
+    .then(function(response) {
+      return {
+        data: response.data
+      };
+    });
 }
-
-// export function fetchAPIData () {
-//   return axios.all([
-//     fetchData()
-//   ])
-//   .then(axios.spread(function (responseData) {
-//     // ... but this callback will be executed only when both requests are complete.
-//     return {
-//       data: responseData.data
-//     };
-//   }));
-// }

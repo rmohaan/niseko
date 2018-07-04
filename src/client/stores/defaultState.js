@@ -2,7 +2,7 @@
 
 let state = {
   rooms: [],
-  filterData: ""
+  filterData: ''
 };
 
 export default state;

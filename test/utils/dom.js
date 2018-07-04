@@ -3,10 +3,11 @@
 import jsdom from 'jsdom';
 
 let doc = jsdom.jsdom('<!doctype html><html><body></body></html>'),
-    win = doc.defaultView;
+  win = doc.defaultView;
 
 global.document = doc;
 global.window = win;
+global.navigator = { userAgent: 'node.js' };
 
 function propagateToGlobal (window) {
   for (let key in window) {

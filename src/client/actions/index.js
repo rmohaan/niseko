@@ -11,7 +11,6 @@ export function setRoomsData (data) {
   };
 }
 
-
 export function updateRoomsOnFilter (query) {
   return {
     type: actionEvents.SET_FILTER_DATA,
@@ -22,12 +21,11 @@ export function updateRoomsOnFilter (query) {
 export function getRoomsData () {
   return function (dispatch) {
     return dataRequests.getRoomsData()
-       .then(function (response) {
-         dispatch(setRoomsData(response.data));
-       })
-       .catch((err) => {
-         console.log(err);
-          dispatch(push('/'))
-       });
+      .then(function (response) {
+        dispatch(setRoomsData(response.data));
+      })
+      .catch(() => {
+        dispatch(push('/'));
+      });
   };
 }

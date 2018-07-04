@@ -36,8 +36,8 @@ app.get ('/', (req, res, next) => {
 });
 
 app.get('/api/getData',
-        (req, res) => routes.getData(req, res));
+  (req, res) => routes.getData(req, res));
 
 app.listen(port, () => {
-  console.log('listening on', port)
+  console.log('listening on', port);
 });

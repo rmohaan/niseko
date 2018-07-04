@@ -4,10 +4,7 @@ import * as reducers from '../../src/client/reducers';
 import defaultState from './defaultState';
 
 const reducer = combineReducers({
-  example: reducers.example,
-  user: function (state) {
-    return Object.assign({}, state);
-  }
+  rooms: reducers.roomsData
 });
 
 const store = createStore(reducer, defaultState, compose(
