@@ -5,31 +5,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import CardRender from './cardRender';
 import _ from 'lodash';
-import SearchInput, {createFilter} from 'react-search-input'
-
-const KEYS_TO_FILTERS = ['name', 'description', 'standardPax', "maximumPax"];
+import { createFilter } from 'react-search-input'
+import PropTypes from 'prop-types';
+import CardRender from './cardRender';
+import { KEYS_TO_FILTER } from './constants';
 
 class HomePage extends React.Component {
+  static propTypes = {
+    rooms: PropTypes.array,
+    filterInput: PropTypes.string
+  };
+
+
   render () {
-    let data = this.props.rooms ? this.props.rooms.data : [],
+    let data = this.props.rooms ? this.props.rooms : [],
         filterInput = this.props.filterData ? this.props.filterData : "",
         filteredData = data;
     if (filterInput.length > 0) {
-      filteredData = filteredData.filter(createFilter(this.props.filterData, KEYS_TO_FILTERS));
+      filteredData = filteredData.filter(createFilter(filterInput, KEYS_TO_FILTER));
     }
     return (
-      <div>
         <CardRender roomList={filteredData} />
-      </div>
     );
   }
 }
 
 function select (state) {
   return {
-    rooms: state.rooms,
+    rooms: state.rooms.data,
     filterData: state.filterData
   };
 }

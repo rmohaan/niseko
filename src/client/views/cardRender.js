@@ -4,9 +4,13 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import * as CONSTANTS from './constants';
 
 class CardRender extends React.Component {
+  static propTypes = {
+    roomList: PropTypes.array
+  };
 
   constructor ()  {
     super();
@@ -99,23 +103,25 @@ _generateNoDataFound () {
   return (
     <div className="col-md-12 card">
       <div className="card-content-no-data">
-        No Data Found 
+        <i className="fa fa-warning card-unavailable"></i>
+        <span> No results found </span>
       </div>
     </div>
   );
 }
 
 render () {
-    let list = this.props.roomList;
-    if (list && list.length > 0) {
-      list = this.generateProductLayout(list);
+    const { roomList } = this.props;
+    let layout;
+    if (roomList && roomList.length > 0) {
+      layout = this.generateProductLayout(roomList);
     }
     else {
-      list = this.generateNoDataFound();
+      layout = this.generateNoDataFound();
     }
     return (
       <div className="cardRender">
-        {list}
+        {layout}
       </div>
     );
   }

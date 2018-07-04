@@ -4,17 +4,18 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
 import Header from './header';
 import Footer from './footer';
 import HomePage from './homePage';
 import SearchBar from './searchBar';
-import * as actions from '../actions/index';
-import { connect } from 'react-redux';
+import { getRoomsData } from '../actions/index';
+
 
 class Home extends React.Component {
 
   componentDidMount () {
-    this.props.dispatch(actions.getRoomsData());
+    this.props.dispatch(getRoomsData());
   }
 
   render () {

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import * as actions from '../actions/index';
+import { updateRoomsOnFilter } from '../actions/index';
 
 class SearchBar extends React.Component {
   constructor() {
@@ -12,13 +12,13 @@ class SearchBar extends React.Component {
     this.textChanged = (event) => this._textChanged(event);
   }
 
-  //TODO: Why do I need to push this to store???
+  //TODO: Why do I need to push this to store??? - To use this and get the value for highlighting
   _textChanged (event) {
     event.preventDefault();
     this.setState ({
       text: event.target.value
     }, () => {
-      this.props.dispatch(actions.updateRoomsOnFilter(this.state.text));
+      this.props.dispatch(updateRoomsOnFilter(this.state.text));
     });
   }
 
