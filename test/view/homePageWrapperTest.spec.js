@@ -8,7 +8,7 @@ import expect from 'expect';
 import Provider from '../utils/provider';
 import Home from '../../src/client/views/homePageWrapper';
 
-describe('Checking Rendering', function () {
+describe('<HomePageWrapper /> Default Rendering', function () {
   const wrapper = mount(<Provider><Home /></Provider>);
   
   it('Base Component is rendered', function () {
@@ -30,6 +30,4 @@ describe('Checking Rendering', function () {
   it('Footer component should be rendered', function () {
     expect(wrapper.find('Footer').length).toEqual(1);
   });
-
-  
 });

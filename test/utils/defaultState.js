@@ -1,9 +1,8 @@
 'use strict';
 
-import data from '../../data';
-
 let state = {
-  rooms: data
+  rooms: [],
+  filterData: ''
 };
 
 export default state;

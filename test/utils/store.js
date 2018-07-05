@@ -4,7 +4,8 @@ import * as reducers from '../../src/client/reducers';
 import defaultState from './defaultState';
 
 const reducer = combineReducers({
-  rooms: reducers.roomsData
+  rooms: reducers.roomsData,
+  filterData: reducers.filterData
 });
 
 const store = createStore(reducer, defaultState, compose(

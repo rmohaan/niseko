@@ -18,7 +18,7 @@ class HomePage extends React.Component {
       filteredData = filteredData.filter(createFilter(filterInput, KEYS_TO_FILTER));
     }
     return (
-      <CardRender roomList={filteredData} />
+      <CardRender roomList={filteredData} filterInput={filterInput}/>
     );
   }
 }

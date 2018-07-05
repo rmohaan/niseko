@@ -4,16 +4,54 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import classNames from 'classnames';
+import Highlight from 'react-highlighter';
 import * as CONSTANTS from './constants';
 
 class CardRender extends React.Component {
   constructor ()  {
     super();
     String.prototype.toProperCase = function () {
-      return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+      return this.replace(/\w\S*/g, (txt) => { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
     };
     this.generateProductLayout = (list) => this._generateProductLayout(list);
     this.generateNoDataFound = () =>  this._generateNoDataFound();
+    this.generateRoomSpec = (className, displayName, displayValue) => this._generateRoomSpec(className, displayName, displayValue);
+    this.getHighlightedText = (text) => this._getHighlightedText(text);
+    this.generateAmenitiesSpec = (displayName, displayValue) => this._generateAmenitiesSpec(displayName, displayValue);
+  }
+
+  _getHighlightedText (text) {
+    return (
+      <Highlight search={this.props.filterInput} matchClass="search-highlight"> 
+        {text}
+      </Highlight>
+    );
+  }
+
+  _generateRoomSpec (className, displayName, displayValue) {
+    let style = classNames(className, 'icon-setter'),
+      specText = `${displayName}: ${displayValue}`;
+    return (
+      <div className="card-room-spec">
+        <i className={style}></i> 
+        <span> 
+          {this.getHighlightedText(specText)}
+        </span>
+      </div>
+    );
+  }
+
+  _generateAmenitiesSpec(displayName, displayValue) {
+    return (
+      <li>
+        <i className={displayValue ? 'fa fa-check card-available' : 'fa fa-times card-unavailable'}></i> 
+        <span>
+          {displayName}
+        </span>
+      </li>
+    );
   }
 
   _generateProductLayout (list) {
@@ -25,29 +63,17 @@ class CardRender extends React.Component {
             <img className="card-image" src={item.images.length > 0 ? item.images[0] : CONSTANTS.NO_IMAGE_URL} height="225px" width="225px" />
             <div className="card-info"> 
               <div className="card-name">
-                {item.name.toProperCase()}
+                {this.getHighlightedText(item.name.toProperCase())}
               </div>
               <div className="card-desc">
-                {item.description}
+                {this.getHighlightedText(item.description)}
               </div>
               <div className="card-room-details">
                 Room Details
-                <div className="card-room-spec">
-                  <i className="fa fa-bed icon-setter"></i> 
-                  <span> Bedroom: {item.bathrooms} </span>
-                </div>
-                <div className="card-room-spec">
-                  <i className="fa fa-user icon-setter"></i> 
-                  <span>Occupancy: {item.standardPax}</span>
-                </div>
-                <div className="card-room-spec">
-                  <i className="fa fa-users icon-setter"></i> 
-                  <span>Max. Occupancy: {item.maximumPax}</span>
-                </div>
-                <div className="card-room-spec">
-                  <i className="fa fa-square icon-setter"></i> 
-                  <span>Floor Sizing: {item.floorArea}sqm</span>
-                </div>
+                {this.generateRoomSpec('fa fa-bed', 'Beds', item.bathrooms)}
+                {this.generateRoomSpec('fa fa-user', 'Occupancy', item.standardPax)}
+                {this.generateRoomSpec('fa fa-users', 'Max. Occupancy', item.maximumPax)}
+                {this.generateRoomSpec('fa fa-square', 'Floor Sizing', item.floorArea)}
               </div>
             </div>
             <div className="card-amenities">
@@ -55,34 +81,13 @@ class CardRender extends React.Component {
                 Amenities
               </div>
               <ul className="card-amenities-list">
-                <li>
-                  <i className={item.amenities.aircon ? 'fa fa-check card-available' : 'fa fa-times card-unavailable'}></i> 
-                  <span>Air Conditioned</span>
-                </li>
-                <li>
-                  <i className={item.amenities.hdtv ? 'fa fa-check card-available' : 'fa fa-times card-unavailable'}></i> 
-                  <span>Free satellite TV with English language channels </span>
-                </li>
-                <li>
-                  <i className={item.amenities.btspeakers ? 'fa fa-check card-available' : 'fa fa-times card-unavailable'}></i> 
-                  <span>5.1 Bluetooth surround system</span>
-                </li>
-                <li>
-                  <i className={item.amenities.cardkey ? 'fa fa-check card-available' : 'fa fa-times card-unavailable'}></i> 
-                  <span>Handy portable card key</span>
-                </li>
-                <li>
-                  <i className={item.amenities.chromecast ? 'fa fa-check card-available' : 'fa fa-times card-unavailable'}></i> 
-                  <span>Application Streaming</span>
-                </li>
-                <li>
-                  <i className={item.amenities.jacuzzi ? 'fa fa-check card-available' : 'fa fa-times card-unavailable'}></i> 
-                  <span>Whirlpool bathtubs</span>
-                </li>
-                <li>
-                  <i className={item.amenities.fireplace ? 'fa fa-check card-available' : 'fa fa-times card-unavailable'}></i> 
-                  <span>Dedicated Fireplace</span>
-                </li>
+                {this.generateAmenitiesSpec('Air Conditioned', item.amenities.aircon)}
+                {this.generateAmenitiesSpec('Free satellite TV with English language channels', item.amenities.hdtv)}
+                {this.generateAmenitiesSpec('5.1 Bluetooth surround system', item.amenities.btspeakers)}
+                {this.generateAmenitiesSpec('Handy portable card key', item.amenities.cardkey)}
+                {this.generateAmenitiesSpec('Application Streaming', item.amenities.chromecast)}
+                {this.generateAmenitiesSpec('Whirlpool bathtubs', item.amenities.jacuzzi)}
+                {this.generateAmenitiesSpec('Dedicated Fireplace', item.amenities.fireplace)}
               </ul>
             </div>
           </div>
@@ -123,4 +128,4 @@ CardRender.propTypes = {
   roomList: PropTypes.array
 };
 
-export default CardRender;
+export default connect()(CardRender);

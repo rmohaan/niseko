@@ -25,8 +25,9 @@
     "build": "webpack -d",
     "start": "npm-run-all build startServer",
     "lint": "./node_modules/.bin/eslint src",
-    "lint-fixup": "./node_modules/.bin/eslint src --ext .js,.jsx --fix",
-    "test": "mocha test/view/*.spec.js"
+    "lintFixup": "./node_modules/.bin/eslint src --ext .js,.jsx --fix",
+    "test": "mocha test/view/*.spec.js -R mocha-bamboo-reporter",
+    "testCoverage": "cross-env NODE_ENV=test nyc --reporter=lcov npm test"
   },
   "dependencies": {
     "axios": "^0.15.3",
@@ -55,6 +56,7 @@
     "nyc": "^8.3.1",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
+    "react-highlighter": "^0.4.2",
     "react-redux": "^4.4.5",
     "react-router": "^2.6.0",
     "react-router-redux": "^4.0.5",
@@ -77,7 +79,8 @@
     "jsdom": "^9.2.0",
     "mocha": "^2.5.3",
     "nodemon": "^1.17.5",
-    "react-addons-test-utils": "^15.2.1"
+    "react-addons-test-utils": "^15.2.1",
+    "sinon": "^6.1.0"
   },
   "nyc": {
     "exclude": [
