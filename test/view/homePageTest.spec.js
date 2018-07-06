@@ -11,23 +11,23 @@ import SearchBar from '../../src/client/views/searchBar';
 import * as actionEvents from '../../src/client/actions/events';
 import data from '../middleware';
 
-describe('<HomePage /> Default Rendering', function () {
+describe('<HomePage /> Default Rendering', () => {
   const wrapper = mount(<Provider><HomePage /></Provider>);
     
-  it('Base Component is rendered', function () {
+  it('Base Component is rendered', () => {
     expect(wrapper.find('HomePage').length).toEqual(1);
   });
 
-  it('CardRender component should be rendered', function () {
+  it('CardRender component should be rendered', () => {
     expect(wrapper.find('CardRender').length).toEqual(1);
   });
 
-  it('CardRender component should have roomList prop and it should be an array', function () {
+  it('CardRender component should have roomList prop and it should be an array', () => {
     expect(Array.isArray(wrapper.find('CardRender').props().roomList)).toBe(true);
   });
 });
 
-describe('<HomePage /> Search Results', function () {
+describe('<HomePage /> Search Results', () => {
   const wrapper = mount(<Provider><HomePage /></Provider>),
     searchBar = mount(<Provider><SearchBar /></Provider>),
     dispatch = searchBar.find('SearchBar').first().prop('dispatch');
@@ -45,10 +45,6 @@ describe('<HomePage /> Search Results', function () {
     });
     
     it('##Results should have 2 elements', () => {
-      dispatch({
-        type: actionEvents.SET_FILTER_DATA,
-        payload: 'relaxation'
-      });
       searchBar.find('input').simulate('change', {
         target: {
           value: 'relaxation'
@@ -64,10 +60,6 @@ describe('<HomePage /> Search Results', function () {
         type: actionEvents.SET_ROOMS_DATA,
         payload: data
       });
-      dispatch({
-        type: actionEvents.SET_FILTER_DATA,
-        payload: 'saki 18 test'
-      });
       searchBar.find('input').simulate('change', {
         target: {
           value: 'saki 18 test'
@@ -75,7 +67,7 @@ describe('<HomePage /> Search Results', function () {
       });
     });
     
-    it('##Results should have 0 elements', function () {
+    it('##Results should have 0 elements', () => {
       expect(wrapper.find('CardRender').props().roomList.length).toBe(0);
     });
   });

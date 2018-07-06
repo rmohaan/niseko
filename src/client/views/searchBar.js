@@ -9,9 +9,28 @@ class SearchBar extends React.Component {
       text: '',
     };
     this.textChanged = (event) => this._textChanged(event);
+    this.clearSearchTxt = () => this._clearSearchTxt();
+    this.getClearIcon = () => this._getClearIcon();
   }
 
-  //TODO: Why do I need to push this to store??? - To use this and get the value for highlighting
+  _getClearIcon () {
+    if (this.state.text) {
+      return (
+        <span className="input-group-addon" onClick={this.clearSearchTxt}>
+          <i className="fa fa-times"></i>
+        </span>
+      );
+    }
+  }
+
+  _clearSearchTxt () {
+    this.setState({ 
+      text: '' 
+    }, () => {
+      this.props.dispatch(updateRoomsOnFilter(this.state.text));
+    });
+  }
+
   _textChanged (event) {
     event.preventDefault();
     this.setState ({
@@ -22,15 +41,16 @@ class SearchBar extends React.Component {
   }
 
   render() {
-
+    const clearIcon = this.getClearIcon();
     return (
-      <div>
-        <input type="text"
+      <div className="input-group">
+        <input type="text" 
           id="search"
-          className="form-control"
+          className="form-control" 
+          placeholder="Search rooms..." 
           value={this.state.text}
-          onChange={this.textChanged}
-          placeholder="Search rooms..." />
+          onChange={this.textChanged} />
+        {clearIcon}
       </div>
     );
   }
