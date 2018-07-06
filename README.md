@@ -7,7 +7,7 @@ niseko module
 ## Install
 
 ```sh
-$ npm install niseko --save
+$ git clone https://github.com/rmohaan/niseko.git
 ```
 ## Install dependencies
 ```sh
