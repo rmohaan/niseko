@@ -19,13 +19,7 @@ describe('<CardRender /> Default Rendering', () => {
 
   it('No data message is shown', () => {
     expect(wrapper.find('.card-content-no-data').length).toEqual(1);
-  });
-
-  it('No data icon is shown', () => {
     expect(wrapper.find('.fa .fa-warning .card-unavailable').length).toEqual(1);
-  });
-
-  it('No data message is valid', () => {
     expect(wrapper.find('span').text()).toBe(' No results found ');
   });
 
